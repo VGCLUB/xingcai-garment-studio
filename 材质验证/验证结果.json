@@ -1,0 +1,34 @@
+{
+  "sameGeometry": true,
+  "sameDye": "#5b777b",
+  "light": "studio",
+  "pose": "angle",
+  "samples": 8,
+  "presets": [
+    {
+      "preset": "cotton",
+      "glbErrors": 0,
+      "glbWarnings": 0,
+      "poseUnchanged": true
+    },
+    {
+      "preset": "satin",
+      "glbErrors": 0,
+      "glbWarnings": 0,
+      "poseUnchanged": true
+    },
+    {
+      "preset": "velvet",
+      "glbErrors": 0,
+      "glbWarnings": 0,
+      "poseUnchanged": true
+    },
+    {
+      "preset": "coated",
+      "glbErrors": 0,
+      "glbWarnings": 0,
+      "poseUnchanged": true
+    }
+  ],
+  "errors": []
+}

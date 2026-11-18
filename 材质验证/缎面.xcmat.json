@@ -1,0 +1,138 @@
+{
+  "format": "xingcai-material",
+  "version": 1,
+  "name": "斜纹缎面",
+  "nodes": [
+    {
+      "id": "coord",
+      "type": "ShaderNodeTexCoord",
+      "params": {}
+    },
+    {
+      "id": "mapping",
+      "type": "ShaderNodeMapping",
+      "params": {
+        "scale": 1,
+        "rotation": 0
+      }
+    },
+    {
+      "id": "color",
+      "type": "ShaderNodeTexImage",
+      "params": {
+        "image": null
+      }
+    },
+    {
+      "id": "rough",
+      "type": "ShaderNodeTexImage",
+      "params": {
+        "image": null
+      }
+    },
+    {
+      "id": "normal",
+      "type": "ShaderNodeTexImage",
+      "params": {
+        "image": null
+      }
+    },
+    {
+      "id": "noise",
+      "type": "ShaderNodeTexNoise",
+      "params": {
+        "scale": 110,
+        "detail": 3,
+        "roughness": 0.7
+      }
+    },
+    {
+      "id": "ramp",
+      "type": "ShaderNodeValToRGB",
+      "params": {
+        "low": 0.18,
+        "high": 0.82,
+        "black": 0.55,
+        "white": 0.96
+      }
+    },
+    {
+      "id": "bump",
+      "type": "ShaderNodeBump",
+      "params": {
+        "strength": 0.12,
+        "distance": 0.012
+      }
+    },
+    {
+      "id": "surface",
+      "type": "ShaderNodeBsdfPrincipled",
+      "params": {
+        "ior": 1.46,
+        "specularIORLevel": 0.5,
+        "roughness": 0.24,
+        "diffuseRoughness": 0.25,
+        "sheenWeight": 0.19,
+        "sheenRoughness": 0.28,
+        "sheenTint": "#f0e6d9",
+        "anisotropy": 0.78,
+        "anisotropyRotation": 0,
+        "coatWeight": 0,
+        "coatRoughness": 0.25,
+        "coatIOR": 1.5,
+        "normalStrength": 0.18
+      }
+    },
+    {
+      "id": "output",
+      "type": "ShaderNodeOutputMaterial",
+      "params": {}
+    }
+  ],
+  "links": [
+    {
+      "from": "coord.UV",
+      "to": "mapping.Vector"
+    },
+    {
+      "from": "mapping.Vector",
+      "to": "color.Vector"
+    },
+    {
+      "from": "mapping.Vector",
+      "to": "rough.Vector"
+    },
+    {
+      "from": "mapping.Vector",
+      "to": "normal.Vector"
+    },
+    {
+      "from": "mapping.Vector",
+      "to": "noise.Vector"
+    },
+    {
+      "from": "noise.Fac",
+      "to": "ramp.Fac"
+    },
+    {
+      "from": "noise.Fac",
+      "to": "bump.Height"
+    },
+    {
+      "from": "normal.Color",
+      "to": "bump.Normal"
+    },
+    {
+      "from": "color.Color",
+      "to": "surface.Base Color"
+    },
+    {
+      "from": "bump.Normal",
+      "to": "surface.Normal"
+    },
+    {
+      "from": "surface.BSDF",
+      "to": "output.Surface"
+    }
+  ]
+}

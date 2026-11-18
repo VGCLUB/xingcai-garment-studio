@@ -1,0 +1,237 @@
+{
+  "format": "xingcai-material",
+  "version": 2,
+  "name": "透光欧根纱",
+  "nodes": [
+    {
+      "id": "coord",
+      "type": "ShaderNodeTexCoord",
+      "params": {}
+    },
+    {
+      "id": "mapping",
+      "type": "ShaderNodeMapping",
+      "params": {
+        "scale": 1,
+        "rotation": 0,
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "color",
+      "type": "ShaderNodeTexImage",
+      "params": {
+        "image": null,
+        "role": "color"
+      }
+    },
+    {
+      "id": "rough",
+      "type": "ShaderNodeTexImage",
+      "params": {
+        "image": null,
+        "role": "rough"
+      }
+    },
+    {
+      "id": "normal",
+      "type": "ShaderNodeTexImage",
+      "params": {
+        "image": null,
+        "role": "normal"
+      }
+    },
+    {
+      "id": "noise",
+      "type": "ShaderNodeTexNoise",
+      "params": {
+        "scale": 110,
+        "detail": 3,
+        "roughness": 0.7
+      }
+    },
+    {
+      "id": "ramp",
+      "type": "ShaderNodeValToRGB",
+      "params": {
+        "low": 0.18,
+        "high": 0.82,
+        "black": 0.55,
+        "white": 0.96,
+        "dark": "#000000",
+        "light": "#ffffff"
+      }
+    },
+    {
+      "id": "bump",
+      "type": "ShaderNodeBump",
+      "params": {
+        "strength": 0.12,
+        "distance": 0.004
+      }
+    },
+    {
+      "id": "surface",
+      "type": "ShaderNodeBsdfPrincipled",
+      "params": {
+        "ior": 1.33,
+        "specularIORLevel": 0.27,
+        "roughness": 0.32,
+        "diffuseRoughness": 0.45,
+        "sheenWeight": 0.16,
+        "sheenRoughness": 0.61,
+        "sheenTint": "#cee9e5",
+        "anisotropy": 0.56,
+        "anisotropyRotation": 0,
+        "coatWeight": 0,
+        "coatRoughness": 0.25,
+        "coatIOR": 1.5,
+        "normalStrength": 0.18,
+        "transmission": 0.76,
+        "thickness": 0.025,
+        "attenuationDistance": 0.22,
+        "attenuationColor": "#a3dcd0",
+        "subsurface": 0.6,
+        "subsurfaceScale": 0.6,
+        "radiusR": 1,
+        "radiusG": 0.65,
+        "radiusB": 0.45,
+        "alpha": 1,
+        "metalness": 0,
+        "emissionStrength": 0,
+        "emissionColor": "#ffffff",
+        "baseColor": "#ffffff",
+        "specularTint": "#ffffff",
+        "coatTint": "#ffffff"
+      }
+    },
+    {
+      "id": "output",
+      "type": "ShaderNodeOutputMaterial",
+      "params": {}
+    },
+    {
+      "id": "normalMap",
+      "type": "ShaderNodeNormalMap",
+      "params": {
+        "strength": 0.18
+      }
+    },
+    {
+      "id": "weft",
+      "type": "ShaderNodeTexWave",
+      "params": {
+        "scale": 65,
+        "angle": 90
+      }
+    },
+    {
+      "id": "warp",
+      "type": "ShaderNodeTexWave",
+      "params": {
+        "scale": 91,
+        "angle": 0
+      }
+    },
+    {
+      "id": "yarns",
+      "type": "ShaderNodeMath",
+      "params": {
+        "operation": "multiply",
+        "a": 0.5,
+        "b": 0.5
+      }
+    },
+    {
+      "id": "sheer",
+      "type": "ShaderNodeValToRGB",
+      "params": {
+        "low": 0.1,
+        "high": 0.9,
+        "black": 0.68,
+        "white": 0.82,
+        "dark": "#000000",
+        "light": "#ffffff"
+      }
+    }
+  ],
+  "links": [
+    {
+      "from": "coord.UV",
+      "to": "mapping.Vector"
+    },
+    {
+      "from": "mapping.Vector",
+      "to": "color.Vector"
+    },
+    {
+      "from": "mapping.Vector",
+      "to": "rough.Vector"
+    },
+    {
+      "from": "mapping.Vector",
+      "to": "normal.Vector"
+    },
+    {
+      "from": "mapping.Vector",
+      "to": "noise.Vector"
+    },
+    {
+      "from": "noise.Fac",
+      "to": "ramp.Fac"
+    },
+    {
+      "from": "normalMap.Normal",
+      "to": "bump.Normal"
+    },
+    {
+      "from": "color.Color",
+      "to": "surface.Base Color"
+    },
+    {
+      "from": "bump.Normal",
+      "to": "surface.Normal"
+    },
+    {
+      "from": "surface.BSDF",
+      "to": "output.Surface"
+    },
+    {
+      "from": "normal.Color",
+      "to": "normalMap.Color"
+    },
+    {
+      "from": "mapping.Vector",
+      "to": "normalMap.Vector"
+    },
+    {
+      "from": "mapping.Vector",
+      "to": "weft.Vector"
+    },
+    {
+      "from": "mapping.Vector",
+      "to": "warp.Vector"
+    },
+    {
+      "from": "weft.Fac",
+      "to": "yarns.A"
+    },
+    {
+      "from": "warp.Fac",
+      "to": "yarns.B"
+    },
+    {
+      "from": "yarns.Value",
+      "to": "sheer.Fac"
+    },
+    {
+      "from": "sheer.Fac",
+      "to": "surface.Transmission Weight"
+    },
+    {
+      "from": "yarns.Value",
+      "to": "bump.Height"
+    }
+  ]
+}

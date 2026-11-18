@@ -1,0 +1,12 @@
+{
+  "shaderCases": 64,
+  "maxAbsoluteError": 0.00004680820381074147,
+  "materialRoundTrip": true,
+  "projectRoundTrip": true,
+  "preservedDrape": true,
+  "imageUpload": true,
+  "embeddedImageRoundTrip": true,
+  "historyPreservedDrape": true,
+  "invalidImportPreservedState": true,
+  "webglErrors": []
+}

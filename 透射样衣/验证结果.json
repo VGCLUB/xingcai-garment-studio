@@ -1,0 +1,37 @@
+{
+  "solverSteps": 120,
+  "nodes": 15,
+  "linearBacklightRGB": {
+    "disabled": [
+      0,
+      0,
+      0
+    ],
+    "thin": [
+      0.07638543844223022,
+      0.021032467484474182,
+      0.006977047771215439
+    ],
+    "thicker": [
+      0.004606854170560837,
+      2.9108987291692756E-05,
+      8.462514955454026E-08
+    ]
+  },
+  "glbErrors": 0,
+  "glbWarnings": 0,
+  "webglErrors": [],
+  "layerContact": {
+    "thresholdCm": 0.05,
+    "with": {
+      "samples": 2620,
+      "maxDepthCm": 0,
+      "penetrations": 0
+    },
+    "without": {
+      "samples": 2620,
+      "maxDepthCm": 1.8215895993416176,
+      "penetrations": 92
+    }
+  }
+}

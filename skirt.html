@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>形裁 · 服装工作台</title><link rel="stylesheet" href="studio.css"></head>
+<body>
+<header><div class="brand"><i>◩</i>形裁</div><span class="divider"></span><span class="project">双片 A 字裙</span><div class="actions"><a href="index.html" style="color:#fff;align-self:center">通用制版</a><button id="open">打开工程</button><button id="save">保存工程</button><button id="simulate" class="primary">▶　模拟</button></div><input hidden id="file" type="file" accept=".json"></header>
+<main>
+<section class="viewport"><div class="bar"><h2><em>3D</em> 试衣视窗</h2><div><button id="obj" title="以米为单位导出当前裙布网格">导出 OBJ</button><button id="camera" title="恢复观察角度">视角复位</button></div></div><div id="stage"><div class="view-note" id="phase">静态预览</div><div class="legend">拖动旋转　·　滚轮缩放</div></div></section>
+<section class="pattern"><div class="bar"><h2><em>2D</em> 纸样视窗</h2><span class="unit">cm</span></div><div id="draft"><div class="tools"><button id="select" aria-pressed="true">选择裁片</button><button id="sew" aria-pressed="false">线段缝纫</button></div><svg id="paper" viewBox="0 0 480 360" aria-label="前后片纸样，可选择裁片或侧缝"></svg><div id="hint">点击裁片，在下方修改尺寸</div></div></section>
+<section class="inspector"><div class="panel-head"><h2>裁片属性</h2><div class="tabs"><button id="front">前片</button><button id="back">后片</button></div></div><div class="measurements" id="measurements"></div></section>
+<section class="seams"><div class="panel-head"><h2>缝合关系</h2><button id="arrange">重新布置</button></div><div id="seamList"></div></section>
+</main>
+<footer><span class="lamp"></span><span id="status" role="status">样衣已就绪</span><span class="footer-side">形裁服装工作台</span></footer>
+<script src="vendor/three.min.js"></script><script src="cloth.js"></script><script src="viewer.js"></script><script src="studio.js"></script></body></html>
+
